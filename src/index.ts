@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req:Request, res:Response) => {
-		res.send("started")
+		res.send("startsded")
 });
 app.listen(3000, () => {
 	console.log('server is running and here we gos')
