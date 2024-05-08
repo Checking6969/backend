@@ -11,5 +11,5 @@ app.get('/', (req:Request, res:Response) => {
 		res.send("started")
 });
 app.listen(3000, () => {
-	console.log('server is running and here we go')
+	console.log('server is running and here we gos')
 })
