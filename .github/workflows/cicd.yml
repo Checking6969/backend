@@ -1,0 +1,23 @@
+name: Deploy to Azure App Service
+
+on:
+  push: 
+    branches: 
+      - main
+
+jobs: 
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+      - name: SSH and deploy
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > keyfile
+          chmod 600 keyfile
+          mkdir -p ~/.ssh
+          cp known_hosts ~/.ssh/known_hosts
+          ssh -t -i keyfile azureuser@20.198.8.183 "bash ~/deploy.sh" 
+          ls
